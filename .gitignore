@@ -1,0 +1,8 @@
+node_modules/
+server/node_modules/
+client/vehicle-rental-frontend/node_modules/
+
+client/vehicle-rental-frontend/package-lock.json
+server/package-lock.json
+
+.env
