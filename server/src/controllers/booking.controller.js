@@ -3,7 +3,6 @@ const Booking = db.bookings;
 const Vehicle = db.vehicles;
 const { Op } = require("sequelize");
 
-// Check availability
 exports.checkAvailability = async (req, res) => {
   try {
     const { vehicleId, startDate, endDate } = req.query;
@@ -14,7 +13,6 @@ exports.checkAvailability = async (req, res) => {
       });
     }
     
-    // Check for overlapping bookings
     const overlappingBookings = await Booking.findAll({
       where: {
         vehicleId,
@@ -49,10 +47,8 @@ exports.checkAvailability = async (req, res) => {
   }
 };
 
-// Create a new booking
 exports.create = async (req, res) => {
   try {
-    // Validate request
     if (!req.body.firstName || !req.body.lastName || !req.body.vehicleId || 
         !req.body.startDate || !req.body.endDate) {
       return res.status(400).send({
@@ -62,7 +58,6 @@ exports.create = async (req, res) => {
     
     const { firstName, lastName, vehicleId, startDate, endDate } = req.body;
     
-    // Check for overlapping bookings
     const overlappingBookings = await Booking.findAll({
       where: {
         vehicleId,
@@ -93,7 +88,6 @@ exports.create = async (req, res) => {
       });
     }
     
-    // Create a booking
     const booking = {
       firstName,
       lastName,

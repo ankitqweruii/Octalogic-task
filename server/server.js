@@ -4,19 +4,14 @@ const seedDatabase = require("./src/seed");
 
 const app = express();
 
-// Use CORS
 app.use(cors());
 
-// Parse requests of content-type - application/json
 app.use(express.json());
 
-// Parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-// Database connection
 const db = require("./src/models");
 
-// In development, you might want to reset the database:
 if (process.env.NODE_ENV === 'development') {
   db.sequelize.sync({ force: true }).then(() => {
     console.log("Drop and re-sync db.");
@@ -28,7 +23,6 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-// Simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the vehicle rental application." });
 });

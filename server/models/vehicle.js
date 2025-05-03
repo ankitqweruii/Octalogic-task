@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class Vehicle extends Model {
    
     static associate(models) {
-      // define association here
     }
   }
   Vehicle.init({

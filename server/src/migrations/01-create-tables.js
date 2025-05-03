@@ -110,7 +110,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // Drop tables in reverse order to avoid foreign key constraints
     await queryInterface.dropTable('bookings');
     await queryInterface.dropTable('vehicles');
     await queryInterface.dropTable('vehicleTypes');
